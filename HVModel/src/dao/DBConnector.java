@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import model.Mascota;
@@ -7,7 +8,6 @@ import model.Person;
 
 public class DBConnector  extends DBManager implements HVServices{
 
-	
 	
 	
 	// Miquel 
@@ -47,8 +47,11 @@ public class DBConnector  extends DBManager implements HVServices{
 	//Eduard 
 	@Override
 	public HashSet<Person> findLikeByOwnerName(String strLike) {
-		// TODO Auto-generated method stub
-		return null;
+
+		ArrayList<Person> list = selectLike(Person.class, "name", strLike);  
+		
+		HashSet<Person> set = new HashSet<>(list);
+		return set;
 	}
 
 	//Luis 
