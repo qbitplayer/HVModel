@@ -1,6 +1,8 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Set;
 
 import model.Mascota;
 import model.Person;
@@ -60,16 +62,23 @@ public class DBConnector  extends DBManager implements HVServices{
 
 	//Dorian 
 	@Override
-	public HashSet<Mascota> selectAllPerson() {
-		// TODO Auto-generated method stub
-		return null;
+	public HashSet<Person> selectAllPerson() {
+		HashSet<Person> list =null;				 	
+		connect();		
+			list = new HashSet<Person>(selectAll(Person.class));			
+		close();	
+		return list;
 	}
 
 	//Dorian 
 	@Override
 	public HashSet<Mascota> selectAllMascota() {
-		// TODO Auto-generated method stub
-		return null;
+		HashSet<Mascota> list =null;		
+			
+		connect();		
+			list = new HashSet<Mascota>(selectAll(Mascota.class));			
+		close();	
+		return list;
 	}
 
 }
